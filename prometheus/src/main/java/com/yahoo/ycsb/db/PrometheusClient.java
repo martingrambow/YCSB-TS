@@ -37,10 +37,10 @@ public class PrometheusClient extends DB {
     private URL urlPut = null;
     private String ip_pushgateway = "localhost";
     private String ip_prometheus = "localhost";
-    private String putURL = "/api/put";
+    private String putURL = "/metrics/job";
     private int port_pushgateway = 9091;
     private int port_prometheus = 9090;
-    private boolean _debug = false;
+    private boolean _debug = true;
     private boolean useCount = true;
     private boolean usePlainTextFormat = true;
     private CloseableHttpClient client;
@@ -81,7 +81,12 @@ public class PrometheusClient extends DB {
 			
 			if (getProperties().containsKey("queryURLInfix")) {
                 queryURLInfix = getProperties().getProperty("queryURLInfix", queryURLInfix);
-            }            
+				System.out.println("URLInfix was set to: " + queryURLInfix);
+            }
+			if (getProperties().containsKey("putURL")) {
+                putURL = getProperties().getProperty("putURL", putURL);
+				System.out.println("putURL was set to: " + queryURLInfix);
+            }			
 
             if (_debug) {
                 System.out.println("The following properties are given: ");
@@ -114,6 +119,7 @@ public class PrometheusClient extends DB {
     }
 
     private JSONArray runQuery(URL url, String queryStr) {
+		System.out.println("Running query " + queryStr + " to " + url);
         JSONArray jsonArr = new JSONArray();
         HttpResponse response = null;
         try {
@@ -192,6 +198,7 @@ public class PrometheusClient extends DB {
      */
     @Override
     public void cleanup() throws DBException {
+		System.out.println("Cleanup called");
         try {
             if (!test) {
                 client.close();
@@ -211,7 +218,8 @@ public class PrometheusClient extends DB {
      */
     @Override
     public int read(String metric, Timestamp timestamp, HashMap<String, ArrayList<String>> tags) {
-        if (metric == null || metric.isEmpty() || !metric.matches(metricRegEx)) {
+        System.out.println("Read called");
+		if (metric == null || metric.isEmpty() || !metric.matches(metricRegEx)) {
             return -1;
         }
         if (timestamp == null) {
@@ -305,7 +313,8 @@ public class PrometheusClient extends DB {
     public int scan(String metric, Timestamp startTs, Timestamp endTs, HashMap<String,
             ArrayList<String>> tags, boolean avg, boolean count, boolean sum, int timeValue, TimeUnit timeUnit) {
 
-        if (metric == null || metric.isEmpty() || !metric.matches(metricRegEx)) {
+        System.out.println("Scan called");
+		if (metric == null || metric.isEmpty() || !metric.matches(metricRegEx)) {
             return -1;
         }
         if (startTs == null || endTs == null) {
@@ -435,10 +444,12 @@ public class PrometheusClient extends DB {
      */
     @Override
     public int insert(String metric, Timestamp timestamp, double value, HashMap<String, ByteIterator> tags) {
-        if (metric == null || metric.isEmpty() || !metric.matches(metricRegEx) || timestamp == null) {
+        System.out.println("insert called");
+		if (metric == null || metric.isEmpty() || !metric.matches(metricRegEx) || timestamp == null) {
             return -1;
         }
         if (usePlainTextFormat) {
+			System.out.println("using Plain text format");
             String queryString = "#TYPE " + metric + " gauge\n" + metric;
             if (tags.size() > 0) {
                 queryString += "{";
@@ -476,6 +487,7 @@ public class PrometheusClient extends DB {
             }
         } else {
             // No usage of custom timestamps possible
+			System.out.println("using other path");
             CollectorRegistry registry = new CollectorRegistry();
             Gauge gauge = Gauge.build().name(metric).help(timestamp.toString()).labelNames(tags.keySet().toArray(new String[]{})).create();
             Gauge.Child child = gauge.labels(tags.keySet().toArray(new String[]{}));
