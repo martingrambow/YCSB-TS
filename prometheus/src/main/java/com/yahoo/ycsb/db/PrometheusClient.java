@@ -37,7 +37,7 @@ public class PrometheusClient extends DB {
     private URL urlPut = null;
     private String ip_pushgateway = "localhost";
     private String ip_prometheus = "localhost";
-    private String putURL = "/metrics/job";
+    private String putURL = "/metrics/job/testjob";
     private int port_pushgateway = 9091;
     private int port_prometheus = 9090;
     private boolean _debug = true;
