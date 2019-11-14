@@ -457,14 +457,14 @@ public class PrometheusClient extends DB {
                     queryString += tagKey + "=\"" +
                             (tags.get(tagKey).toString().replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n")) +
                             "\",";
-                queryString = queryString.substring(0, queryString.length() - 1) + "} " + value + " " + timestamp.getTime();
+                queryString = queryString.substring(0, queryString.length() - 1) + "} " + value;
             } else
-                queryString += " " + value + " " + timestamp.getTime();
+                queryString += " " + value;
 
             try {
 
                 if (_debug) {
-                    System.out.println("Timestamp: " + timestamp.getTime());
+                    System.out.println("Timestamp (will be ignored): " + timestamp.getTime());
                     System.out.println("Input Query String: " + queryString);
                 }
                 if (test) {
