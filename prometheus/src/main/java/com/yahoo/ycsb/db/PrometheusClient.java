@@ -49,7 +49,7 @@ public class PrometheusClient extends DB {
 
     private static final DateFormat rfc3339Format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
     private static final String metricRegEx = "[a-zA-Z_:][a-zA-Z0-9_:]*";
-    private String queryURLInfix = "/api/v1/query";
+    private String queryURLInfix = "";
 
     /**
      * Initialize any state for this DB.
@@ -78,6 +78,10 @@ public class PrometheusClient extends DB {
                 throw new DBException("No port_pushgateway given, abort.");
             }
             port_pushgateway = Integer.parseInt(getProperties().getProperty("port_pushgateway", String.valueOf(port_pushgateway)));
+			
+			if (getProperties().containsKey("queryURLInfix")) {
+                queryURLInfix = getProperties().getProperty("queryURLInfix", queryURLInfix);
+            }            
 
             if (_debug) {
                 System.out.println("The following properties are given: ");
