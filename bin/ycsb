@@ -49,6 +49,7 @@ DATABASES = {
     "kairosdb"    : "com.yahoo.ycsb.db.KairosDBClient",
     "opentsdb"    : "com.yahoo.ycsb.db.OpenTSDBClient",
     "influxdb"    : "com.yahoo.ycsb.db.InfluxDBClient",
+    "victoriametrics"    : "com.yahoo.ycsb.db.VictoriaMetricsClient",
     "newts"    : "com.yahoo.ycsb.db.NewTSClient",
     "rhombus"    : "com.yahoo.ycsb.db.RhombusClient",
     "blueflood"    : "com.yahoo.ycsb.db.BluefloodClient",
@@ -139,7 +140,9 @@ def get_classpath_from_maven(database):
                                               "-am", "package", "-DskipTests",
                                               "dependency:build-classpath",
                                               "-DincludeScope=compile",
-                                              "-Dmdep.outputFilterFile=true"])
+                                              "-Dmdep.outputFilterFile=true"],
+                                              stderr=subprocess.STDOUT,
+                                              shell=True)
         # the above outputs a "classpath=/path/tojar:/path/to/other/jar" for each module
         # the last module will be the datastore binding
         line = [x for x in mvn_output.splitlines() if x.startswith("classpath=")][-1:]

@@ -57,6 +57,11 @@ LICENSE file.
         </dependency>
         <dependency>
             <groupId>com.yahoo.ycsb</groupId>
+            <artifactId>victoriametrics-binding</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yahoo.ycsb</groupId>
             <artifactId>jdbc-binding</artifactId>
             <version>${project.version}</version>
         </dependency>

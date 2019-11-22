@@ -102,6 +102,7 @@ LICENSE file.
         <module>prometheus</module>
         <module>influxdb-java</module>
         <module>influxdb</module>
+        <module>victoriametrics</module>
         <module>jdbc</module>
         <module>hana</module>
         <module>newts</module>

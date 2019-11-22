@@ -868,15 +868,17 @@ public class CoreWorkload extends Workload {
                             availTags.add(j);
                         }
                     }
-                    int amount = this.getRandomRangeInt(rand, 1, availTags.size());
-                    for (int j = 0; j < amount; j++) {
-                        // Take random tag and remove it
-                        int tagIndex = this.getRandomRangeInt(rand, 0, availTags.size()-1);
-                        if (! chosenTags.containsKey(tagPrefix+availTags.get(tagIndex))) {
-                            chosenTags.put(tagPrefix+availTags.get(tagIndex),new ArrayList<String>());
+                    if (availTags.size() > 0) {
+                        int amount = this.getRandomRangeInt(rand, 1, availTags.size());
+                        for (int j = 0; j < amount; j++) {
+                            // Take random tag and remove it
+                            int tagIndex = this.getRandomRangeInt(rand, 0, availTags.size() - 1);
+                            if (!chosenTags.containsKey(tagPrefix + availTags.get(tagIndex))) {
+                                chosenTags.put(tagPrefix + availTags.get(tagIndex), new ArrayList<String>());
+                            }
+                            chosenTags.get(tagPrefix + availTags.get(tagIndex)).add(usedTags.get(index)[availTags.get(tagIndex)]);
+                            availTags.remove(tagIndex);
                         }
-                        chosenTags.get(tagPrefix+availTags.get(tagIndex)).add(usedTags.get(index)[availTags.get(tagIndex)]);
-                        availTags.remove(tagIndex);
                     }
                 }
                 // Finally put them into tags array
