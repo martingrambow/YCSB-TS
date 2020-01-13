@@ -141,11 +141,11 @@ sumproportion=1
 # other examples:
 # 1 ms = return avg/sum/count for every 1 ms in time period used
 # 1 s = return avg/sum/count for every 1 s in time perdiod used
-timevalue=0
+timevalue=1
 
 # which timeunit to use for avg/count/sum
 # (possible: ms, s, m, h, d)
-timeunit=ms
+timeunit=m
 
 # The distribution of requests across the keyspace (uniform/latest)
 requestdistribution=uniform
