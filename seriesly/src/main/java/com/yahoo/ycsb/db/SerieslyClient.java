@@ -38,7 +38,7 @@ import com.yahoo.ycsb.DBException;
  */
 public class SerieslyClient extends DB {
 
-	private boolean _debug = false;
+	private boolean _debug = true;
 	private boolean test = false;
 	private final int SUCCESS = 0;
 
