@@ -47,11 +47,11 @@ operationcount=100
 # Used with insertstart to grow an existing table.
 #insertcount=
 
-# The begin of the insertion time space (time: 1. Nov 00:00:00 CEST 2019) (inclusive)
+# The begin of the insertion time space (1. Nov 2019 00:00:00)
 insertstart=1572566400000
 
-# The end of the insertion time space (exclusive 19. Nov)
-insertend=1574121600000
+# The end of the insertion time space (31. Dec 2019 23:59:59)
+insertend=1577833199000
 
 # Maximum execution time in seconds
 #maxexecutiontime=
@@ -73,7 +73,7 @@ timeseries.granularity=1000
 metric=usermetric
 
 # The number of tags per record
-tagcount=3
+tagcount=1
 
 # The distribution used to choose the length of a tag value
 tagvaluelengthdistribution=constant
@@ -81,10 +81,10 @@ tagvaluelengthdistribution=constant
 #tagvaluelengthdistribution=zipfian
 
 # The size of each tag value (in bytes)
-tagvaluelength=10
+tagvaluelength=4
 
 # Prefix for tags (only use A-Z, a-z)
-tagprefix=TAG
+tagprefix=Item
 
 # Randomly choose tagamount per record between 0 and tagcount if true
 randomtagamount=false
@@ -110,8 +110,8 @@ predefinedtagstoragefile=predefinedtags.txt
 predefinedtagstoreused=true
 
 # Range between (e.g. sensor-) values can vary
-valuemax=100
-valuemin=0
+valuemax=50
+valuemin=1
 
 # Filename containing the tag length histogram
 # (only used if tagvaluelengthdistribution is "histogram")
@@ -145,16 +145,16 @@ timevalue=1
 
 # which timeunit to use for avg/count/sum
 # (possible: ms, s, m, h, d)
-timeunit=m
+timeunit=h
 
 # The distribution of requests across the keyspace (uniform/latest)
 requestdistribution=uniform
 
-# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access
-maxscanlength=1000
+# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 10h
+maxscanlength=36000000
 
-# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access
-minscanlength=100
+# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 1h
+minscanlength=3600000
 
 # The distribution used to choose the period (in milliseconds) to access on a scan/avg/count/sum
 scanlengthdistribution=uniform
@@ -179,7 +179,7 @@ randomfloorfilling=true
 # (it will be randomly chosed how many tags are used and for each tag randomly between 1
 # and querymaxtagvalues how many tagvalues)
 # e.g. (scan TAG1={1,2,3}, TAG2={1.2},... <tag>={<tagvalues>})
-querymaxtagvalues=3
+querymaxtagvalues=5
 
 # don't use tags for read, as it is quite hopeless (searching for one timestamp
 # and matching the right tags -> not really possible)
