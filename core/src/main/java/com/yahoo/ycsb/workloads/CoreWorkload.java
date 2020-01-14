@@ -1026,7 +1026,7 @@ public class CoreWorkload extends Workload {
             // if not, just drop "try {" and the finally block and change
             // transactioninsertkeysequence back to CounterGenerator
             // Could have a race condition when going back to 0.2.0 code, see git commits of YCSB
-            transactioninsertkeysequence.acknowledge(keynum);
+            // transactioninsertkeysequence.acknowledge(keynum);
         }
     }
 }
