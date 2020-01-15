@@ -47,11 +47,11 @@ operationcount=100
 # Used with insertstart to grow an existing table.
 #insertcount=
 
-# The begin of the insertion time space (time: 1. Nov 00:00:00 CEST 2019) (inclusive)
+# The begin of the insertion time space (1. Nov 2019 00:00:00)
 insertstart=1572566400000
 
-# The end of the insertion time space (exclusive 19. Nov)
-insertend=1574121600000
+# The end of the insertion time space (31. Dec 2019 23:59:59)
+insertend=1577833199000
 
 # Maximum execution time in seconds
 #maxexecutiontime=
@@ -167,8 +167,8 @@ maxrecordsperts=10
 # always maxrecordsperts records per timestamp, tsrandom: randomly choose timestamp and add value
 # (when using tsrandom recordamount between 0 to recordcount per timestamp (maxrecordsperts has no effect))
 #randomamountperts=constant
-#randomamountperts=tsrandom
-randomamountperts=random
+randomamountperts=tsrandom
+#randomamountperts=random
 
 # when set to true and using randomamountperts = tsrandom, every timestamp will at least have 1 record after Load Phase
 # (Benchmarking will be wrong and recordcount must be greater than (insertstart-insertend)
@@ -199,6 +199,6 @@ description=Smart Factory
 
 # Size of one timestep in milliseconds
 # 1 = 1 ms, 1000 = 1 s,..
-timeresolution=1000
+timeresolution=1
 
 ##########################################

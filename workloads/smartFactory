@@ -36,22 +36,23 @@ workload=com.yahoo.ycsb.workloads.CoreWorkload
 # The number of records in the table to be inserted in
 # the load phase or the number of records already in the
 # table before the run phase.
-recordcount=1000
+#=~20 per h
+recordcount=30000
 
 # There is no default setting for operationcount but it is
 # required to be set.
 # The number of operations to use during the run phase.
-operationcount=100
+operationcount=20000
 
 # The number of insertions to do, if different from recordcount.
 # Used with insertstart to grow an existing table.
 #insertcount=
 
 # The begin of the insertion time space (1. Nov 2019 00:00:00)
-insertstart=1572566400000
+                       insertstart=1572566400000
 
-# The end of the insertion time space (31. Dec 2019 23:59:59)
-insertend=1577833199000
+                       # The end of the insertion time space (31. Dec 2019 23:59:59)
+                       insertend=1577833199000
 
 # Maximum execution time in seconds
 #maxexecutiontime=
@@ -150,11 +151,11 @@ timeunit=h
 # The distribution of requests across the keyspace (uniform/latest)
 requestdistribution=uniform
 
-# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 10h
-maxscanlength=36000000
+# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 20d
+maxscanlength=1728000000
 
-# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 1h
-minscanlength=3600000
+# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 1d
+minscanlength=86400000
 
 # The distribution used to choose the period (in milliseconds) to access on a scan/avg/count/sum
 scanlengthdistribution=uniform
@@ -167,8 +168,8 @@ maxrecordsperts=10
 # always maxrecordsperts records per timestamp, tsrandom: randomly choose timestamp and add value
 # (when using tsrandom recordamount between 0 to recordcount per timestamp (maxrecordsperts has no effect))
 #randomamountperts=constant
-#randomamountperts=tsrandom
-randomamountperts=random
+randomamountperts=tsrandom
+#randomamountperts=random
 
 # when set to true and using randomamountperts = tsrandom, every timestamp will at least have 1 record after Load Phase
 # (Benchmarking will be wrong and recordcount must be greater than (insertstart-insertend)
@@ -199,6 +200,6 @@ description=Smart Factory
 
 # Size of one timestep in milliseconds
 # 1 = 1 ms, 1000 = 1 s,..
-timeresolution=1000
+timeresolution=1
 
 ##########################################
