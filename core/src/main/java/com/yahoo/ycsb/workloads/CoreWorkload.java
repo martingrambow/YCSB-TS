@@ -1020,7 +1020,7 @@ public class CoreWorkload extends Workload {
         String dbkey = String.valueOf(keynum);
         HashMap<String, ByteIterator> values = buildValues(dbkey);
         db.insert(metric, new Timestamp(keynum*timeResolution), getRandomDouble(rand, this.valuemin, this.valuemax), values);
-        System.err.println("WARNING: INSERT inside RUN phase is untested!.");
+        //System.err.println("WARNING: INSERT inside RUN phase is untested!.");
         } finally {
             // Don't know if this works (change introduced in 0.4.0
             // if not, just drop "try {" and the finally block and change

@@ -40,7 +40,7 @@ public class VictoriaMetricsClient extends DB {
     private String dbName = "testdb";
     private int port = 8086;
     private String queryURLInfix = "/api/v1/query";
-    private boolean _debug = true;
+    private boolean _debug = false;
     private String valueFieldName = "value"; // in which field should the value be?
 
     private InfluxDB influxClient;
@@ -216,11 +216,6 @@ public class VictoriaMetricsClient extends DB {
             return -1;
         }
 
-        if (tags.size() > 0) {
-            System.out.println("THERE ARE TAGS!!!!!");
-            System.out.println("###################################");
-        }
-
         NumberFormat durationOffsetFormat = new DecimalFormat("###");
         int tries = retries + 1;
         HttpGet getMethod;
@@ -278,7 +273,6 @@ public class VictoriaMetricsClient extends DB {
         loop:
         while (true) {
             tries--;
-            System.out.println("Tries: " + tries);
             try {
                 response = victoriaClient.execute(getMethod);
                 String inputLine = "";

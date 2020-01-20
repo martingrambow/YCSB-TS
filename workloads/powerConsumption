@@ -36,12 +36,12 @@ workload=com.yahoo.ycsb.workloads.CoreWorkload
 # The number of records in the table to be inserted in
 # the load phase or the number of records already in the
 # table before the run phase.
-recordcount=1000
+recordcount=300000
 
 # There is no default setting for operationcount but it is
 # required to be set.
 # The number of operations to use during the run phase.
-operationcount=100
+operationcount=300000
 
 # The number of insertions to do, if different from recordcount.
 # Used with insertstart to grow an existing table.
@@ -81,13 +81,13 @@ tagvaluelengthdistribution=constant
 #tagvaluelengthdistribution=zipfian
 
 # The size of each tag value (in bytes)
-tagvaluelength=10
+tagvaluelength=6
 
 # Prefix for tags (only use A-Z, a-z)
 tagprefix=TAG
 
 # Randomly choose tagamount per record between 0 and tagcount if true
-randomtagamount=false
+randomtagamount=true
 
 # Generate (randomly) predefined set of values for each tag if true
 # otherwise if false generate random tagvalues for every record
@@ -100,7 +100,7 @@ predefinedtagvalues=true
 # Amount of randomly generated predefined set of values per Tag
 # (Don't set this to high, otherwise you get in the range of 1
 # tag per record, see comment on 'predefinedtagvalues' parameter)
-predefinedtagvalueamount=5
+predefinedtagvalueamount=30
 
 # Between RUN and LOAD the tags/tagvalues will be temporarly stored in this file
 predefinedtagstoragefile=predefinedtags.txt
@@ -150,11 +150,11 @@ timeunit=m
 # The distribution of requests across the keyspace (uniform/latest)
 requestdistribution=uniform
 
-# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access
-maxscanlength=1000
+# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 5d
+maxscanlength=432000000
 
-# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access
-minscanlength=100
+# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 1h
+minscanlength=3600000
 
 # The distribution used to choose the period (in milliseconds) to access on a scan/avg/count/sum
 scanlengthdistribution=uniform
@@ -195,7 +195,7 @@ csvfile=values.csv
 csvbuffersize=100000
 
 # Description for the workload
-description=Smart Factory
+description=Power Consumption
 
 # Size of one timestep in milliseconds
 # 1 = 1 ms, 1000 = 1 s,..

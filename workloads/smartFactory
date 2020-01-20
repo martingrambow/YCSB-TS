@@ -37,22 +37,22 @@ workload=com.yahoo.ycsb.workloads.CoreWorkload
 # the load phase or the number of records already in the
 # table before the run phase.
 #=~20 per h
-recordcount=30000
+recordcount=300000
 
 # There is no default setting for operationcount but it is
 # required to be set.
 # The number of operations to use during the run phase.
-operationcount=20000
+operationcount=300000
 
 # The number of insertions to do, if different from recordcount.
 # Used with insertstart to grow an existing table.
 #insertcount=
 
 # The begin of the insertion time space (1. Nov 2019 00:00:00)
-                       insertstart=1572566400000
+insertstart=1572566400000
 
-                       # The end of the insertion time space (31. Dec 2019 23:59:59)
-                       insertend=1577833199000
+# The end of the insertion time space (31. Dec 2019 23:59:59)
+insertend=1577833199000
 
 # Maximum execution time in seconds
 #maxexecutiontime=
