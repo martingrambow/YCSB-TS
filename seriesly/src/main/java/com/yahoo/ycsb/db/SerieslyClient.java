@@ -294,10 +294,6 @@ public class SerieslyClient extends DB {
 
 			JSONObject jsonObject = doGet(newQueryURL);
 
-			if (_debug) {
-				System.out.println("Answer: " + jsonObject.toString());
-			}
-
 			JSONArray jsonArray = jsonObject.getJSONArray(Long.toString(timestampLong));
 
 			if (jsonArray == null || jsonArray.length() < 1) {
@@ -305,6 +301,10 @@ public class SerieslyClient extends DB {
 				System.err.println("ERROR: Found no values for metric: " + metric + ".");
 				return -1;
 
+			} else {
+				if (_debug) {
+					System.out.println("Found: " + jsonArray.length() + " items in response");
+				}
 			}
 
 		} catch (MalformedURLException e) {
