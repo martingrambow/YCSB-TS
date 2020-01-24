@@ -37,12 +37,12 @@ workload=com.yahoo.ycsb.workloads.CoreWorkload
 # the load phase or the number of records already in the
 # table before the run phase.
 #=~20 per h
-recordcount=14400
+recordcount=87840
 
 # There is no default setting for operationcount but it is
 # required to be set.
 # The number of operations to use during the run phase.
-operationcount=16440
+operationcount=100284
 
 # The number of insertions to do, if different from recordcount.
 # Used with insertstart to grow an existing table.
@@ -52,10 +52,10 @@ operationcount=16440
 insertstart=1572566400000
 
 # The end of the insertion time space (31. Dec 2019 23:59:59)
-insertend=1573430400000
+insertend=1577836800000
 
-# Maximum execution time in seconds (10min)
-#maxexecutiontime=600
+# Maximum execution time in seconds (20min)
+#maxexecutiontime=1200
 
 # How the latency measurements are presented
 measurementtype=hdrhistogram
@@ -121,19 +121,19 @@ valuemin=1
 readproportion=0
 
 # What proportion of operations are inserts
-insertproportion=192
+insertproportion=1927
 
 # What proportion of operations are scans
-scanproportion=8
+scanproportion=80
 
 # what proportion of operations should be avg
-avgproportion=3
+avgproportion=32
 
 # what proportion of operations should be count
-countproportion=3
+countproportion=32
 
 # what proportion of operations should be sum
-sumproportion=13
+sumproportion=128
 
 # which timevalue to use for avg/count/sum,
 # zero means return one value over the whole
