@@ -41,6 +41,7 @@ public class SerieslyClient extends DB {
 	private boolean _debug = true;
 	private boolean test = false;
 	private final int SUCCESS = 0;
+	private int queries = 0;
 
 	private String db_name = "TestDB";
 	private String metricFieldName = "metric";
@@ -121,7 +122,6 @@ public class SerieslyClient extends DB {
 	}
 
 	private Integer doPut(URL url) {
-
 		Integer statusCode;
 		HttpResponse response = null;
 		try {
@@ -162,8 +162,14 @@ public class SerieslyClient extends DB {
 		return statusCode;
 	}
 
-	private Integer doPost(URL url, String queryStr) {
+	private void incrementQueries() {
+		queries++;
+		if (queries % 10000 == 0 && _debug) {
+			System.out.println("processed " + queries + " queries.");
+		}
+	}
 
+	private Integer doPost(URL url, String queryStr) {
 		Integer statusCode;
 		HttpResponse response = null;
 		try {
@@ -281,6 +287,7 @@ public class SerieslyClient extends DB {
 		if (timestamp == null) {
 			return -1;
 		}
+		incrementQueries();
 
 		try {
 			long timestampLong = timestamp.getTime();
@@ -356,6 +363,7 @@ public class SerieslyClient extends DB {
 		if (startTs == null || endTs == null) {
 			return -1;
 		}
+		incrementQueries();
 
 		String aggregation = "any";
 		if (avg) {
@@ -450,7 +458,7 @@ public class SerieslyClient extends DB {
 		if (timestamp == null) {
 			return -1;
 		}
-
+		incrementQueries();
 		try {
 
 			JSONObject insertObject = new JSONObject();
