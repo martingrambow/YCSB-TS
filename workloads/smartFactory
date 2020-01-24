@@ -37,12 +37,12 @@ workload=com.yahoo.ycsb.workloads.CoreWorkload
 # the load phase or the number of records already in the
 # table before the run phase.
 #=~20 per h
-recordcount=87840
+recordcount=1339200
 
 # There is no default setting for operationcount but it is
 # required to be set.
 # The number of operations to use during the run phase.
-operationcount=100284
+operationcount=1345524
 
 # The number of insertions to do, if different from recordcount.
 # Used with insertstart to grow an existing table.
@@ -51,8 +51,8 @@ operationcount=100284
 # The begin of the insertion time space (1. Nov 2019 00:00:00)
 insertstart=1572566400000
 
-# The end of the insertion time space (31. Dec 2019 23:59:59)
-insertend=1577836800000
+# The end of the insertion time space
+insertend=1575244800000
 
 # Maximum execution time in seconds (20min)
 #maxexecutiontime=1200
@@ -110,7 +110,7 @@ predefinedtagstoragefile=predefinedtags.txt
 predefinedtagstoreused=true
 
 # Range between (e.g. sensor-) values can vary
-valuemax=5
+valuemax=10
 valuemin=1
 
 # Filename containing the tag length histogram
@@ -121,19 +121,19 @@ valuemin=1
 readproportion=0
 
 # What proportion of operations are inserts
-insertproportion=1927
+insertproportion=19906
 
 # What proportion of operations are scans
-scanproportion=80
+scanproportion=27
 
 # what proportion of operations should be avg
-avgproportion=32
+avgproportion=11
 
 # what proportion of operations should be count
-countproportion=32
+countproportion=11
 
 # what proportion of operations should be sum
-sumproportion=128
+sumproportion=44
 
 # which timevalue to use for avg/count/sum,
 # zero means return one value over the whole
@@ -153,7 +153,7 @@ requestdistribution=uniform
 # On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 24h
 maxscanlength=86400000
 
-# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 1h
+# On a single scan/avg/count/sum, the minimum period (in milliseconds) to access, 1h
 minscanlength=3600000
 
 # The distribution used to choose the period (in milliseconds) to access on a scan/avg/count/sum

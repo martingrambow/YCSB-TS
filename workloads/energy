@@ -36,12 +36,12 @@ workload=com.yahoo.ycsb.workloads.CoreWorkload
 # The number of records in the table to be inserted in
 # the load phase or the number of records already in the
 # table before the run phase.
-recordcount=300000
+recordcount=73200
 
 # There is no default setting for operationcount but it is
 # required to be set.
 # The number of operations to use during the run phase.
-operationcount=300000
+operationcount=86376
 
 # The number of insertions to do, if different from recordcount.
 # Used with insertstart to grow an existing table.
@@ -50,8 +50,8 @@ operationcount=300000
 # The begin of the insertion time space (1. Nov 2019 00:00:00)
 insertstart=1572566400000
 
-# The end of the insertion time space (31. Dec 2019 23:59:59)
-insertend=1577833199000
+# The end of the insertion time space
+insertend=1577836800000
 
 # Maximum execution time in seconds
 #maxexecutiontime=
@@ -65,7 +65,6 @@ histogram.buckets=1000
 
 # Granularity for time series (in milliseconds)
 timeseries.granularity=1000
-#timeseries.granularity=10000
 
 #### Parameters for CoreWorkload.java ####
 
@@ -73,7 +72,7 @@ timeseries.granularity=1000
 metric=usermetric
 
 # The number of tags per record
-tagcount=3
+tagcount=1
 
 # The distribution used to choose the length of a tag value
 tagvaluelengthdistribution=constant
@@ -81,7 +80,7 @@ tagvaluelengthdistribution=constant
 #tagvaluelengthdistribution=zipfian
 
 # The size of each tag value (in bytes)
-tagvaluelength=6
+tagvaluelength=4
 
 # Prefix for tags (only use A-Z, a-z)
 tagprefix=TAG
@@ -100,7 +99,7 @@ predefinedtagvalues=true
 # Amount of randomly generated predefined set of values per Tag
 # (Don't set this to high, otherwise you get in the range of 1
 # tag per record, see comment on 'predefinedtagvalues' parameter)
-predefinedtagvalueamount=30
+predefinedtagvalueamount=5
 
 # Between RUN and LOAD the tags/tagvalues will be temporarly stored in this file
 predefinedtagstoragefile=predefinedtags.txt
@@ -110,7 +109,7 @@ predefinedtagstoragefile=predefinedtags.txt
 predefinedtagstoreused=true
 
 # Range between (e.g. sensor-) values can vary
-valuemax=100
+valuemax=10
 valuemin=0
 
 # Filename containing the tag length histogram
@@ -118,22 +117,22 @@ valuemin=0
 #taglengthhistogram=hist.txt
 
 # What proportion of operations are reads
-readproportion=20
+readproportion=0
 
 # What proportion of operations are inserts
-insertproportion=20
+insertproportion=1864
 
 # What proportion of operations are scans
-scanproportion=20
+scanproportion=149
 
 # what proportion of operations should be avg
-avgproportion=20
+avgproportion=149
 
 # what proportion of operations should be count
 countproportion=0
 
 # what proportion of operations should be sum
-sumproportion=20
+sumproportion=37
 
 # which timevalue to use for avg/count/sum,
 # zero means return one value over the whole
@@ -145,15 +144,15 @@ timevalue=1
 
 # which timeunit to use for avg/count/sum
 # (possible: ms, s, m, h, d)
-timeunit=m
+timeunit=h
 
 # The distribution of requests across the keyspace (uniform/latest)
 requestdistribution=uniform
 
-# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 5d
-maxscanlength=432000000
+# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 24h
+maxscanlength=86400000
 
-# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 1h
+# On a single scan/avg/count/sum, the minimum period (in milliseconds) to access, 1h
 minscanlength=3600000
 
 # The distribution used to choose the period (in milliseconds) to access on a scan/avg/count/sum
@@ -179,7 +178,7 @@ randomfloorfilling=true
 # (it will be randomly chosed how many tags are used and for each tag randomly between 1
 # and querymaxtagvalues how many tagvalues)
 # e.g. (scan TAG1={1,2,3}, TAG2={1.2},... <tag>={<tagvalues>})
-querymaxtagvalues=3
+querymaxtagvalues=5
 
 # don't use tags for read, as it is quite hopeless (searching for one timestamp
 # and matching the right tags -> not really possible)
@@ -195,7 +194,7 @@ csvfile=values.csv
 csvbuffersize=100000
 
 # Description for the workload
-description=Power Consumption
+description=Energy
 
 # Size of one timestep in milliseconds
 # 1 = 1 ms, 1000 = 1 s,..

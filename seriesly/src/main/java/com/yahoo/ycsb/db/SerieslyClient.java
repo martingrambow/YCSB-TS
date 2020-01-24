@@ -38,7 +38,7 @@ import com.yahoo.ycsb.DBException;
  */
 public class SerieslyClient extends DB {
 
-	private boolean _debug = true;
+	private boolean _debug = false;
 	private boolean test = false;
 	private final int SUCCESS = 0;
 	private int queries = 0;
@@ -164,7 +164,7 @@ public class SerieslyClient extends DB {
 
 	private void incrementQueries() {
 		queries++;
-		if (queries % 10000 == 0 && _debug) {
+		if (queries % 10000 == 0) {
 			System.out.println("processed " + queries + " queries.");
 		}
 	}
