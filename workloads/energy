@@ -36,19 +36,19 @@ workload=com.yahoo.ycsb.workloads.CoreWorkload
 # The number of records in the table to be inserted in
 # the load phase or the number of records already in the
 # table before the run phase.
-recordcount=73200
+recordcount=2190000
 
 # There is no default setting for operationcount but it is
 # required to be set.
 # The number of operations to use during the run phase.
-operationcount=86376
+operationcount=2268840
 
 # The number of insertions to do, if different from recordcount.
 # Used with insertstart to grow an existing table.
 #insertcount=
 
 # The begin of the insertion time space (1. Nov 2019 00:00:00)
-insertstart=1572566400000
+insertstart=1546300800000
 
 # The end of the insertion time space
 insertend=1577836800000
@@ -83,7 +83,7 @@ tagvaluelengthdistribution=constant
 tagvaluelength=4
 
 # Prefix for tags (only use A-Z, a-z)
-tagprefix=TAG
+tagprefix=Region
 
 # Randomly choose tagamount per record between 0 and tagcount if true
 randomtagamount=true
@@ -120,19 +120,19 @@ valuemin=0
 readproportion=0
 
 # What proportion of operations are inserts
-insertproportion=1864
+insertproportion=2123
 
 # What proportion of operations are scans
-scanproportion=149
+scanproportion=34
 
 # what proportion of operations should be avg
-avgproportion=149
+avgproportion=34
 
 # what proportion of operations should be count
 countproportion=0
 
 # what proportion of operations should be sum
-sumproportion=37
+sumproportion=8
 
 # which timevalue to use for avg/count/sum,
 # zero means return one value over the whole
@@ -144,16 +144,16 @@ timevalue=1
 
 # which timeunit to use for avg/count/sum
 # (possible: ms, s, m, h, d)
-timeunit=h
+timeunit=d
 
 # The distribution of requests across the keyspace (uniform/latest)
 requestdistribution=uniform
 
-# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 24h
-maxscanlength=86400000
+# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 31d
+maxscanlength=2678400000
 
-# On a single scan/avg/count/sum, the minimum period (in milliseconds) to access, 1h
-minscanlength=3600000
+# On a single scan/avg/count/sum, the minimum period (in milliseconds) to access, 24h
+minscanlength=86400000
 
 # The distribution used to choose the period (in milliseconds) to access on a scan/avg/count/sum
 scanlengthdistribution=uniform
