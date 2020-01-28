@@ -301,7 +301,7 @@ public class InfluxDBClient extends DB {
             for ( Map.Entry entry : tags.entrySet()) {
                 pb = pb.field(entry.getKey().toString(), entry.getValue().toString());
             }
-            pb = pb.field(this.valueFieldName, String.valueOf(value));
+            pb = pb.field(this.valueFieldName, value);
             if (test) {
                 return SUCCESS;
             }
