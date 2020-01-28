@@ -54,7 +54,7 @@ insertstart=1546300800000
 insertend=1577836800000
 
 # Maximum execution time in seconds
-#maxexecutiontime=
+#maxexecutiontime=300
 
 # How the latency measurements are presented
 measurementtype=hdrhistogram
@@ -149,8 +149,8 @@ timeunit=d
 # The distribution of requests across the keyspace (uniform/latest)
 requestdistribution=uniform
 
-# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 31d
-maxscanlength=2678400000
+# On a single scan/avg/count/sum, the maximum period (in milliseconds) to access, 10d
+maxscanlength=864000000
 
 # On a single scan/avg/count/sum, the minimum period (in milliseconds) to access, 24h
 minscanlength=86400000
